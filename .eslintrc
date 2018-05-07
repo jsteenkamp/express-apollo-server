@@ -1,0 +1,35 @@
+{
+  "extends": ["eslint:recommended", "prettier"],
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "esprima",
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "rules": {
+    "array-callback-return": 0,
+    "no-case-declarations": 0,
+    "no-console": 1,
+    "no-extra-semi": 1,
+    "no-global-assign": [
+      1,
+      {
+        "exceptions": ["onmessage", "close"]
+      }
+    ],
+    "no-unused-vars": 1,
+    "semi": 2,
+    "space-before-function-paren": [
+      2,
+      {
+        "anonymous": "never",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "no-constant-condition": 1
+  }
+}
