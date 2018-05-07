@@ -1,0 +1,24 @@
+{
+  "express": {
+    "host": "localhost",
+    "port": "3002"
+  },
+  "jwt": {
+    "secret": "secret",
+    "expires": "3600"
+  },
+  "api": {
+    "path": "/api",
+    "version": "0"
+  },
+  "graphql": {
+    "path": "/graphql",
+    "graphiql": "/graphiql"
+  },
+  "apollo": {
+    "engine": {
+      "key": "service:jsteenkamp:F0w7coMzd-8p9C3XRt202w"
+    }
+  },
+  "locales": ["en", "de", "zh"]
+}
