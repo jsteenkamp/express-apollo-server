@@ -9,18 +9,14 @@ import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import { execute, subscribe } from 'graphql';
 //import { ApolloEngine } from 'apollo-engine';
-//import { PubSub } from 'graphql-subscriptions';
 import config from 'config';
 import schema from './data/schema';
+
 // config is loaded based on node ENV (from /config via config package)
 const APP_PORT = process.env.PORT || config.get('express.port');
 const GRAPHQL_ENPOINT = config.get('graphql.path');
 const GRAPHIQL_ENPOINT = config.get('graphql.graphiql');
 const ENGINE_API_KEY = config.get('apollo.engine.key');
-
-// only need this in resolver that publishes
-//const pubsub = new PubSub();
-
 // express app
 const app = express();
 
@@ -37,6 +33,7 @@ app.use(
   GRAPHQL_ENPOINT,
   bodyParser.json(),
   graphqlExpress({ schema })
+  // use this if we want Engine monitoring
   //graphqlExpress({ schema, tracing: true, cacheControl: true })
 );
 
@@ -67,6 +64,7 @@ ws.listen(APP_PORT, () => {
 });
 
 /*
+// todo - need to figure out how we wrap this with web sosckets if we want Engine monitoring
 const engine = new ApolloEngine({
   apiKey: ENGINE_API_KEY,
 });

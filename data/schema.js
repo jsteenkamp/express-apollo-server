@@ -51,9 +51,9 @@ type Mutation {
   addMessage(message: MessageInput!): Message
 }
 
-# todo - get subscriptions to work
+# subscriptions
 type Subscription {
-  messageAdded: [Channel]
+  messageAdded(channelId: ID!): Message
 }
 `;
 
