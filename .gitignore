@@ -2,7 +2,4 @@
 .idea
 .vscode
 node_modules
-_assets/messages/*
-dist/build
-dist/package.json
-dist.zip
+*.sqlite

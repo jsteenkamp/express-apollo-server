@@ -15,10 +15,5 @@
     "path": "/graphql",
     "graphiql": "/graphiql"
   },
-  "apollo": {
-    "engine": {
-      "key": "service:jsteenkamp:F0w7coMzd-8p9C3XRt202w"
-    }
-  },
   "locales": ["en", "de", "zh"]
 }

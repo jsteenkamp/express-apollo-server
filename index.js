@@ -8,7 +8,6 @@ import cors from 'cors';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import { execute, subscribe } from 'graphql';
-//import { ApolloEngine } from 'apollo-engine';
 import config from 'config';
 import schema from './data/schema';
 
@@ -16,7 +15,6 @@ import schema from './data/schema';
 const APP_PORT = process.env.PORT || config.get('express.port');
 const GRAPHQL_ENPOINT = config.get('graphql.path');
 const GRAPHIQL_ENPOINT = config.get('graphql.graphiql');
-const ENGINE_API_KEY = config.get('apollo.engine.key');
 // express app
 const app = express();
 
@@ -33,8 +31,6 @@ app.use(
   GRAPHQL_ENPOINT,
   bodyParser.json(),
   graphqlExpress({ schema })
-  // use this if we want Engine monitoring
-  //graphqlExpress({ schema, tracing: true, cacheControl: true })
 );
 
 // graphiql UI
@@ -62,22 +58,3 @@ ws.listen(APP_PORT, () => {
     }
   );
 });
-
-/*
-// todo - need to figure out how we wrap this with web sosckets if we want Engine monitoring
-const engine = new ApolloEngine({
-  apiKey: ENGINE_API_KEY,
-});
-
-engine.listen(
-  {
-    port: APP_PORT,
-    expressApp: app,
-  },
-  () => {
-    console.log(
-      `GraphiQL is now running on http://localhost:${APP_PORT}/${GRAPHIQL_ENPOINT}`
-    );
-  }
-);
-*/
